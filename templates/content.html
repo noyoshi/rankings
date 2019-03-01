@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+<div class="accordion" id="accordionExample">
+  <!-- <ul class="list-group"> -->
+  {% for player in players %} <div class="card" player-name collapsed"
+  type="button" data-toggle="collapse" data-target="#collapse-{{ player.rank }}"
+  aria-expanded="false" aria-controls="collapse-{{ player.rank }}">
+  <div class="card-header infoCard" id="heading-{{ player.rank }}">
+    <!-- <h2 class="mb-5"> -->
+    <div class="row">
+      <div class="col rank" id="{{ player.rank }}-rank">
+        {{ player.output }}
+      </div>
+      <div class="col name" id="{{ player.rank }}-name">
+        {{ player.name }}
+      </div>
+      <div class="col elo" id="{{ player.rank }}-elo">
+        {{ player.elo }}
+      </div>
+    </div>
+  </div>
+  <!-- Extra Info -->
+  <div
+    id="collapse-{{ player.rank }}"
+    class="collapse"
+    aria-labelledby="heading-{{ player.rank }}"
+    data-parent="#accordionExample"
+  >
+    <div class="card-body">
+      Sample match data
+    </div>
+  </div>
+</div>
+{% endfor %} {% endblock %}

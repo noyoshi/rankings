@@ -1,0 +1,45 @@
+h1,
+p,
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.main-desc {
+  text-align: center;
+}
+
+/* The top Buttons of the page */
+.view-btns {
+  text-align: left;
+}
+
+.submit-btn {
+  text-align: right;
+}
+
+/* The specific cards for each ranking entry */
+.infoCard {
+  font-size: 1.75rem;
+}
+
+.rank {
+  text-align: left;
+}
+
+.name {
+  text-align: center;
+}
+
+.elo {
+  text-align: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .infoCard {
+    font-size: 1.25rem;
+  }
+}
