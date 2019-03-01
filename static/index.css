@@ -2,6 +2,16 @@ h1,
 p,
 body {
   font-family: "Lato", sans-serif;
+  font-weight: 300 !important;
+}
+
+/* Because apparently without this, it won't work in anything but firefox .. */
+.input-group-text {
+  font-weight: 300 !important;
+}
+
+.btn {
+  font-weight: 300 !important;
 }
 
 .main-title {
