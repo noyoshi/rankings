@@ -10,9 +10,11 @@
   <tbody>
     {% for player in players %}
     <tr>
-      <th scope="row" class="rank">{{ player.output }}</th>
-      <td class="name">{{ player.name }}</td>
-      <td class="elo">{{ player.elo }}</td>
+      <th scope="row" id="{{ player.rank }}-rank" class="rank">
+        {{ player.output }}
+      </th>
+      <td id="{{ player.rank }}-name" class="name">{{ player.name }}</td>
+      <td id="{{ player.rank }}-elo" class="elo">{{ player.elo }}</td>
     </tr>
     {% endfor %}
   </tbody>
