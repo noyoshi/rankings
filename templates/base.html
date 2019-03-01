@@ -24,9 +24,9 @@
         href="{{ url_for('static', filename='index.css') }}">
 </head>
 <body>
-    <div id="main" class="container">
+    <div id="main" class="container fluid">
         <br>
-        <div class="jumbotron">
+        <div>
             <h1 class="display-4 main-title">SVS Pong Rankings 🏓</h1>
             <p class="lead main-desc">The top 🏓 players on SVS 2019
                 using the <a href="https://en.wikipedia.org/wiki/Elo_rating_system" target="blank">Elo Rating System</a>
@@ -34,17 +34,17 @@
             <hr class="my-4">
             <div class="row">
                 <div class="col view-btns">
-                    <a class="btn btn-primary btn-light" href="/all" role="button">See All Players</a>
-                    <a class="btn btn-primary btn-light" href="/" role="button">Top 10</a>
+                    <a class="btn  btn-outline-dark" href="/all" role="button">All Players</a>
+                    <a class="btn  btn-outline-dark" href="/" role="button">Top 10</a>
                 </div>
                 <div class="col submit-btn">
             <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-dark submit-results" data-toggle="modal" data-target="#exampleModal">
+                    <button type="button" class="btn btn-outline-success submit-results" data-toggle="modal" data-target="#exampleModal">
                         Submit a new match
                     </button>
                 </div>
             </div>
-            <hr class="my-4">
+            <!-- <hr class="my-4"> -->
 
             <br>
             <!-- MODAL REION -->
@@ -84,8 +84,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-success" data-dismiss="modal" onclick="submitAndUpdate();">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="submitAndUpdate();">Save changes</button>
+                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
             {% endblock %}
             </div>
         </div>
-    By <a href="https://github.com/noyoshi" target="blank">Noah Yoshida</a>
+    <p style="text-align: center">By <a href="https://github.com/noyoshi" target="blank">Noah Yoshida</a></p>
     </div>
     <br>
 </body

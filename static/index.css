@@ -10,6 +10,10 @@ body {
   font-weight: 300 !important;
 }
 
+.my-row {
+  display: flex;
+}
+
 .btn {
   font-weight: 300 !important;
 }
@@ -32,24 +36,34 @@ body {
 }
 
 /* The specific cards for each ranking entry */
-.infoCard {
+/* .infoCard {
   font-size: 1.75rem;
-}
+} */
 
 .rank {
   text-align: left;
+  font-weight: 300;
+  font-size: 1.75rem;
 }
 
 .name {
   text-align: center;
+  font-weight: 300;
+  font-size: 1.75rem;
 }
 
 .elo {
   text-align: right;
+  font-weight: 300;
+  font-size: 1.75rem;
+}
+
+.rankings {
+  font-size: 1.75rem !important;
 }
 
 @media only screen and (max-width: 600px) {
-  .infoCard {
-    font-size: 1.25rem;
+  .elo {
+    font-size: 2.25rem;
   }
 }
