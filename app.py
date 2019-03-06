@@ -93,11 +93,14 @@ def export():
 @app.route("/update", methods=["POST"])
 def update():
     # Assume that p0 beat p1
-    p0 = request.form.get("p0").strip()
-    p1 = request.form.get("p1").strip()
+    p0 = request.form.get("p0").strip().lower()
+    p1 = request.form.get("p1").strip().lower()
     s0 = int(request.form.get("s0").strip())
     s1 = int(request.form.get("s1").strip())
 
+    for p in p0, p1:
+        if p not in PLAYERS:
+            PLAYERS[p] = Player(p)
     player0 = PLAYERS[p0]
     player1 = PLAYERS[p1]
 
@@ -119,14 +122,18 @@ def update():
 
 @app.route("/beerUpdate", methods=["POST"])
 def update_beer():
-    p00 = request.form.get("p00").strip()
-    p01 = request.form.get("p01").strip()
+    p00 = request.form.get("p00").strip().lower()
+    p01 = request.form.get("p01").strip().lower()
 
-    p10 = request.form.get("p10").strip()
-    p11 = request.form.get("p11").strip()
+    p10 = request.form.get("p10").strip().lower()
+    p11 = request.form.get("p11").strip().lower()
     
     s0 = int(request.form.get("s0").strip())
     s1 = int(request.form.get("s1").strip())
+
+    for p in p00, p01, p10, p11:
+        if p not in BEER:
+            BEER[p] = Player(p)
 
     player00 = BEER[p00]
     player01 = BEER[p01]
