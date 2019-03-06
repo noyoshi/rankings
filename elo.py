@@ -26,6 +26,24 @@ def update_ratings(player0, player1, score):
     player0.played = True
     player1.played = True
 
+def update_team(team0, team1, score):
+    K = 30
+    team0_elo = (team0[0].elo + team0[1].elo) / 2
+    team1_elo = (team1[0].elo + team1[1].elo) / 2
+    p0 = (1.0 / (1.0 + pow(10, ((team0_elo - team1_elo) / 400))))
+    p1 = (1.0 / (1.0 + pow(10, ((team1_elo - team0_elo) / 400))))
+    team0[0].elo = team0[0].elo + (K * (1 - p0))
+    team0[1].elo = team0[1].elo + (K * (1 - p0))
+
+    team1[0].elo = team1[0].elo + (K * (0 - p1))
+    team1[1].elo = team1[1].elo + (K * (0 - p1))
+
+    for player in team0:
+        player.played = True
+    
+    for player in team1:
+        player.played = True
+
 class Player(object):
     def __init__(self, name):
         self.name = name

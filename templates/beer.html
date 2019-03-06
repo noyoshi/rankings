@@ -13,8 +13,6 @@
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
-    <script
-        src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script 
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
@@ -22,22 +20,21 @@
         <script src="{{ url_for('static', filename='index.js') }}"></script>
     <link rel="stylesheet"
         type="text/css"
-        href="{{ url_for('static', filename='index.css') }}">
+        href="{{ url_for('static', filename='beer.css') }}">
 </head>
-<body id="particles-js">
+<body >
     <div id="main" class="container fluid">
         <br>
         <div>
-            <h1 class="display-4 main-title">SVS Pong Rankings 🏓</h1>
-            <p class="lead main-desc">The top 🏓 players on SVS 2019
-                using the <a href="https://en.wikipedia.org/wiki/Elo_rating_system" target="blank">Elo Rating System</a>
+            <h1 class="display-4 main-title">SVS 🍺 Pong Rankings</h1>
+            <p class="lead main-desc">The sickest 🍺 pong players in the valley
             </p>
             <hr class="my-4">
             <div class="row">
                 <div class="col view-btns">
-                    <a class="btn  all btn-outline-dark" href="/all" role="button">All Players</a>
-                    <a class="btn top-10 btn-outline-dark" href="/" role="button">Top 10</a>
-                    <a class="btn  top-btn btn-outline-dark" href="/beer" role="button">🍺</a>
+                    <a class="btn  top-btn btn-outline-dark" href="/all1" role="button">All Players</a>
+                    <a class="btn top-btn btn-outline-dark" href="/beer" role="button">Top 10</a>
+                    <a class="btn  top-btn btn-outline-dark" href="/" role="button">🏓</a>
                 </div>
                 <div class="col submit-btn">
             <!-- Button trigger modal -->
@@ -64,7 +61,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">Winner 🥇</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input" id="p0" aria-describedby="inputGroup-sizing-default" value="">
+                                <input type="text" class="form-control" aria-label="Sizing example input" id="p00" aria-describedby="inputGroup-sizing-default" value="">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">Winner 🥇</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Sizing example input" id="p01" aria-describedby="inputGroup-sizing-default" value="">
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -76,7 +79,13 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="inputGroup-sizing-default">2nd Place 🥈</span>
                                 </div>
-                                <input type="text" class="form-control" aria-label="Sizing example input" id="p1" aria-describedby="inputGroup-sizing-default" value="">
+                                <input type="text" class="form-control" aria-label="Sizing example input" id="p10" aria-describedby="inputGroup-sizing-default" value="">
+                            </div>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default">2nd Place 🥈</span>
+                                </div>
+                                <input type="text" class="form-control" aria-label="Sizing example input" id="p11" aria-describedby="inputGroup-sizing-default" value="">
                             </div>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -86,7 +95,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="submitAndUpdate();">Save changes</button>
+                            <button type="button" class="btn btn-outline-success" data-dismiss="modal" onclick="submitBeerPongResult();">Save changes</button>
                             <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
@@ -99,5 +108,9 @@
     <p style="text-align: center">By <a href="https://github.com/noyoshi" target="blank">Noah Yoshida</a></p>
     </div>
     <br>
-</body
+</body>
+<div class="ct gradient-border"></div>
+<div class="cr gradient-border"></div>
+<div class="cb gradient-border"></div>
+<div class="cl gradient-border"></div>
       

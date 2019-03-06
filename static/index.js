@@ -12,6 +12,24 @@ function updateRankingList(data) {
   });
 }
 
+function submitBeerPongResult() {
+  var things = ["p01", "p11", "p00", "p10", "s0", "s1"];
+  var results = {};
+  things.forEach(function(t) {
+    var docThing = document.getElementById(t);
+    results[t] = docThing.value;
+  });
+  var promise = $.ajax({
+    type: "POST",
+    url: "/beerUpdate",
+    data: results,
+    dataType: "json"
+  });
+  promise.then(function(data) {
+    updateRankingList(data);
+  });
+}
+
 function submitAndUpdate() {
   var things = ["p0", "p1", "s0", "s1"];
   var results = {};
@@ -29,3 +47,7 @@ function submitAndUpdate() {
     updateRankingList(data);
   });
 }
+
+// particlesJS.load("particles-js", "assets/particles.json", function() {
+//   console.log("callback - particles.js config loaded");
+// });

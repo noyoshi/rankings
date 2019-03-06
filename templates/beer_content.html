@@ -1,0 +1,22 @@
+{% extends "beer.html" %} {% block content %}
+<table class="table rankings">
+  <thead>
+    <tr>
+      <th scope="col" class="rank">#</th>
+      <th scope="col" class="name">Name</th>
+      <th scope="col" class="elo">Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for player in players %}
+    <tr>
+      <th scope="row" id="{{ player.rank }}-rank" class="rank">
+        {{ player.output }}
+      </th>
+      <td id="{{ player.rank }}-name" class="name">{{ player.name }}</td>
+      <td id="{{ player.rank }}-elo" class="elo">{{ player.elo }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

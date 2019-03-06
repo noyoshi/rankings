@@ -3,7 +3,7 @@
 import json
 from flask import Flask, render_template, url_for, request
 
-from elo import Player, update_ratings, get_probs
+from elo import Player, update_ratings, get_probs, update_team
 
 # NOTE: THIS IS NOT THREAD SAFE - FOR SMALL SCALE ONLY
 
@@ -22,7 +22,13 @@ PLAYERS["nick"].played = True
 PLAYERS["chanhee"].played = True
 PLAYERS["allen"].played = True
 
-def get_sorted_players(only_active_players=True):
+BEER = { name: Player(name) for name in name_list }
+BEER["jack"].played = True
+BEER["noah"].played = True
+BEER["allen"].played = True
+BEERMATCHES = []
+
+def get_sorted_players(PLAYERS, only_active_players=True):
     initial_list = list(PLAYERS.values())
     initial_list.sort(key=lambda x: x.elo, reverse=True)
 
@@ -59,11 +65,26 @@ def make_dump(PLAYERS):
 
 @app.route("/")
 def index():
-    return render_template("content.html", players=get_sorted_players()[0:10])
+    return render_template("content.html", players=get_sorted_players(PLAYERS)[0:10])
+
+@app.route("/beer")
+def beer():
+    return render_template("beer_content.html", players=get_sorted_players(BEER)[0:10])
+
+@app.route("/assets/particles.json")
+def particles():
+    with open("assets/particles.json", "r") as f:
+        d = json.loads(f.read())
+    
+    return json.dumps(d)
 
 @app.route("/all")
+def all1():
+    return render_template("content.html", players=get_sorted_players(PLAYERS))
+
+@app.route("/all1")
 def all():
-    return render_template("content.html", players=get_sorted_players())
+    return render_template("beer_content.html", players=get_sorted_players(BEER))
 
 @app.route("/export")
 def export():
@@ -94,7 +115,43 @@ def update():
     with open("matches-backup", "w") as output_file:
         output_file.write(json.dumps(MATCHES))
 
-    return json.dumps(get_sorted_players())
+    return json.dumps(get_sorted_players(PLAYERS))
+
+@app.route("/beerUpdate", methods=["POST"])
+def update_beer():
+    p00 = request.form.get("p00").strip()
+    p01 = request.form.get("p01").strip()
+
+    p10 = request.form.get("p10").strip()
+    p11 = request.form.get("p11").strip()
+    
+    s0 = int(request.form.get("s0").strip())
+    s1 = int(request.form.get("s1").strip())
+
+    player00 = BEER[p00]
+    player01 = BEER[p01]
+
+    player10 = BEER[p10]
+    player11 = BEER[p11]
+
+    team0 = (player00, player01)
+    team1 = (player10, player11)
+    score = (s0, s1)
+    # Updates the elo rating of both players
+    update_team(team0, team1, score)
+
+    # Update the matches list
+    BEERMATCHES.append(((player00.name, player01.name), (player01.name, player11.name), (s0, s1)))
+
+    # Don't do this if the project grows...
+    with open("backup-beer", "w") as output_file:
+        output_file.write(make_dump(BEER))
+    
+    # Saves the match data as well
+    with open("matches-backup-beer", "w") as output_file:
+        output_file.write(json.dumps(BEERMATCHES))
+
+    return json.dumps(get_sorted_players(BEER))
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0")
