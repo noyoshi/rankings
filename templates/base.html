@@ -19,10 +19,10 @@
         src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
         crossorigin="anonymous"></script>
-        <script src="{{ url_for('static', filename='index.js') }}"></script>
+        <script src="{{static_url('index.js')}}"></script>
     <link rel="stylesheet"
         type="text/css"
-        href="{{ url_for('static', filename='index.css') }}">
+        href="{{static_url('index.css')}}">
 </head>
 <body id="particles-js">
     <div id="main" class="container fluid">
@@ -95,7 +95,7 @@
                 </div>
             </div>
             {% block content %}
-            {% endblock %}
+            {% end %}
             </div>
         </div>
     <p style="text-align: center">By <a href="https://github.com/noyoshi" target="blank">Noah Yoshida</a></p>

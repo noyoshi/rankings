@@ -7,11 +7,13 @@ It should look something like...
 `noah,nick,allen,chanhee,jack...`
 
 ## TODO
-- [ ] Write a server in Tornado that works
+
+- [ ] Rewrite the darn thing in Tornado
+- [ ] Use a real database
+
+## Secondary TODOs
 
 - [ ] Add logging
-- [ ] Use a real databse
 - [ ] Refactor code so its less copy-pasty
-- [ ] Use a real server (not the flask development server)
 - [ ] Do more with match histories (show head to head?)
 - [ ] Make player profile pages?
